@@ -1,15 +1,13 @@
 import React from 'react'
 
+import Calculator from './Calculator'
+
 function App () {
   return (
     <>
-      <div className='title'>
-        <img src='' />
-        <h1>H1 title goes here</h1>
-      </div>
+      <Calculator />
       {/* This 'main' div is only for styling (so we can use flexbox) */}
       <div className='main'>
-        
       </div>
     </>
   )
