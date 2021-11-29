@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 
+import { IfSalary, IfNotSalary } from './Salary'
 import { calculate } from '../taxhelper'
 
 function Calculator () {
   const [salary, setSalary] = useState(0)
 
   const [taxed, setTaxed] = useState({
-    tax: undefined,
-    newSalary: undefined
+    tax: 0,
+    newSalary: 0
   })
 
   function handleChange (e) {
@@ -20,10 +21,15 @@ function Calculator () {
 
   return (
     <>
-      <h3>Enter your salary:</h3>
+      <h3>Calculate the tax:</h3>
       <input name='salary' value={salary} onChange={handleChange}></input>
       <button onClick={handleSubmit}>Submit</button>
-      <p>You will pay ${taxed.tax} in taxes and your new taxed salary is ${taxed.newSalary}</p>
+      <IfSalary taxed={taxed.tax}>
+        <p>You will pay ${taxed.tax} in taxes and your new taxed salary is ${taxed.newSalary}</p>
+      </IfSalary>
+      <IfNotSalary taxed={taxed.tax}>
+        <p>Calculate the tax by entering a salary above!</p>
+      </IfNotSalary>
     </>
   )
 }
