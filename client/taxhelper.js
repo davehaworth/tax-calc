@@ -9,30 +9,28 @@ const taxValue2 = 7420
 const taxValue3 = 14020
 const taxValue4 = 50320
 
-function calculate (salary) {
+export function calculate (salary) {
   let tax = 0
   let newSalary = 0
   if (salary <= 14000) {
     tax = salary * taxRate1
     newSalary = salary - tax
-    return { tax: tax, newSalary: newSalary }
+    return { tax: new Intl.NumberFormat().format(tax), newSalary: new Intl.NumberFormat().format(newSalary) }
   } else if (salary > 14000 && salary <= 48000) {
     tax = ((salary - 14000) * taxRate2) + taxValue1
     newSalary = salary - tax
-    return { tax: tax, newSalary: newSalary }
+    return { tax: new Intl.NumberFormat().format(tax), newSalary: new Intl.NumberFormat().format(newSalary) }
   } else if (salary > 48000 && salary <= 70000) {
     tax = ((salary - 48000) * taxRate3) + taxValue2
     newSalary = salary - tax
-    return { tax: tax, newSalary: newSalary }
+    return { tax: new Intl.NumberFormat().format(tax), newSalary: new Intl.NumberFormat().format(newSalary) }
   } else if (salary > 70000 && salary <= 180000) {
     tax = ((salary - 70000) * taxRate4) + taxValue3
     newSalary = salary - tax
-    return { tax: tax, newSalary: newSalary }
+    return { tax: new Intl.NumberFormat().format(tax), newSalary: new Intl.NumberFormat().format(newSalary) }
   } else if (salary > 180000) {
     tax = ((salary - 180000) * taxRate5) + taxValue4
     newSalary = salary - tax
+    return { tax: new Intl.NumberFormat().format(tax), newSalary: new Intl.NumberFormat().format(newSalary) }
   }
 }
-
-const taxObj = calculate(16700)
-console.log(taxObj)
